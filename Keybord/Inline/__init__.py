@@ -1,1 +1,2 @@
-from .inline_keyboard import inline_tan,inline_besin,inline_ekinti,inline_aksham,inline_kuptan,inline_utir,inline_ulken_wudu,inline_wudu
+from .inline_er_keyboard import inline_tan,inline_besin,inline_ekinti,inline_aksham,inline_kuptan,inline_utir,inline_ulken_wudu,inline_wudu
+from .inline_ayel_keyboard import inline_ayel_ulken_wudu,inline_ayel_besin,inline_ayel_aksham,inline_ayel_utir,inline_ayel_kuptan,inline_ayel_ekinti,inline_ayel_wudu,inline_ayel_tan

@@ -2,31 +2,49 @@ from loader import dp
 from aiogram import types
 from aiogram.dispatcher.filters import Command
 from emoji import emojize
-from Keybord.Default import kb_menu, kb_menu_namaz,zhynys_menu
+from Keybord.Default import kb_er_menu, kb_er_menu_namaz,zhynys_menu,kb_ayel_menu_namaz,kb_ayel_menu
 
 
-@dp.message_handler(text="Артқа қайту")
+@dp.message_handler(text="Артқа қайту◀️")
+async def back(message: types.Message):
+    await message.answer("Артқа қайту◀️", reply_markup=zhynys_menu)
+
+@dp.message_handler(text="Артқа қайту⏪️")
 async def back(message: types.Message):
     await message.answer("Артқа қайту", reply_markup=zhynys_menu)
 
 
-@dp.message_handler(text="Менюға артқа қайту")
+
+@dp.message_handler(text="Менюға артқа қайту◀️")
 async def back(message: types.Message):
-    await message.answer("Артқа қайту", reply_markup=kb_menu)
+    await message.answer("Артқа қайту", reply_markup=kb_er_menu)
+
+
+@dp.message_handler(text="Менюға артқа қайту⏪️")
+async def back(message: types.Message):
+    await message.answer("Артқа қайту", reply_markup=kb_ayel_menu)
 
 
 @dp.message_handler(Command("menu"))
 async def main_menu(message: types.Message):
     await message.answer(text='Жынысыныз?', reply_markup=zhynys_menu)
 
-@dp.message_handler(text = "Ер адам")
+@dp.message_handler(text = "Ер адам🧔🏻‍♂️")
 async def er_adam(message: types.Message):
-    await message.answer(text='Ер адам', reply_markup=kb_menu)
+    await message.answer(text='Ер адам🧔🏻‍♂️', reply_markup=kb_er_menu)
 
-@dp.message_handler(text=f'Намаз окып уйрену 🧔🏻‍♂️')
+@dp.message_handler(text = 'Әйел адам🧕🏻')
+async def ayel(message: types.Message):
+    await message.answer(text = 'Әйел адам🧕🏻',reply_markup=kb_ayel_menu)
+
+@dp.message_handler(text=f'Намаз окып уйрену🧔🏻‍♂️')
 async def menu_namaz(message: types.Message):
-    await message.answer('Намаз', reply_markup=kb_menu_namaz)
+    await message.answer('Намаз🧔🏻‍♂️', reply_markup=kb_er_menu_namaz)
 
+
+@dp.message_handler(text=f'Намаз окып уйрену🧕🏻')
+async def menu_namaz(message: types.Message):
+    await message.answer('Намаз🧕🏻', reply_markup=kb_ayel_menu_namaz)
 
 # @dp.message_handler(text="Намаз уакыты")
 # async def namaz_time(message: types.Message):

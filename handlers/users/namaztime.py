@@ -11,7 +11,7 @@ async def get_back(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=namaz_olbys)
 
 
-@dp.message_handler(text='Намаз уакыты')
+@dp.message_handler(text='Намаз уакыты🕌')
 async def namaz_time(message: types.Message):
     await message.answer("Қай қаладансыз?", reply_markup=namaz_olbys)
 

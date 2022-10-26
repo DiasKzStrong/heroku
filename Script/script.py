@@ -17,7 +17,6 @@ def get_namaz_time(inpp):
         if city_list[i]["title"] == inpp:
             c1 = city_list[i]["lat"]
             c2 = city_list[i]["lng"]
-    print(c1,c2)
     req1 = requests.request("GET", url=f'https://api.muftyat.kz/prayer-times/2022/{c1}/{c2}')
     today = str(date.today())
     count = 0
@@ -26,7 +25,6 @@ def get_namaz_time(inpp):
         if city_namaz["result"][i]["Date"] == today:
             count = i
             break
-    print(city_namaz["result"][count])
     return city_namaz["result"][count]
 
 def get_city(answer):
