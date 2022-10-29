@@ -1,7 +1,6 @@
 from loader import dp
 from aiogram import types
 from aiogram.dispatcher.filters import Command
-from emoji import emojize
 from Keybord.Default import kb_er_menu, kb_er_menu_namaz,zhynys_menu,kb_ayel_menu_namaz,kb_ayel_menu
 
 
