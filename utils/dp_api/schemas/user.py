@@ -7,6 +7,6 @@ class User(TimedBaseModel):
     user_id = Column(BigInteger,primary_key=True)
     user_name = Column(String(200),primary_key=True)
     zhynys = Column(String(200),primary_key=True)
-    update_name = Column(String(200),primary_key=True)
+    city = Column(String(200))
 
     query: sql.select

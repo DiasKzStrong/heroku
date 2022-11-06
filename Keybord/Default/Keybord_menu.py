@@ -9,7 +9,7 @@ zhynys_menu = ReplyKeyboardMarkup(
         [
             KeyboardButton(text="Әйел адам🧕🏻")
         ]
-    ]
+    ],
 )
 
 kb_er_menu = ReplyKeyboardMarkup(
@@ -91,5 +91,23 @@ kb_ayel_menu_namaz = ReplyKeyboardMarkup(keyboard=
         KeyboardButton(text="Менюға артқа қайту⏪️")
     ]
 ]
+
+)
+
+
+kb_namaz_time = ReplyKeyboardMarkup(
+    keyboard=[
+
+        [
+            KeyboardButton(text="Қаланы өзгерту")
+        ],
+        [
+            KeyboardButton(text="Менюға артқа қайту◀️")
+        ]
+
+    ],
+    resize_keyboard=True,
+    one_time_keyboard=True
+
 
 )

@@ -1,10 +1,11 @@
 from aiogram import types
 from aiogram.types import CallbackQuery
 from loader import dp
-from Script import get_namaz_time,print_namaz_time
+from Script import get_namaz_time,print_namaz_time,print_namaz_time_message
+from Keybord.Default import kb_namaz_time
 from Keybord.Inline.inline_oblys import namaz_olbys
 from Keybord.Inline.inline_oblys_ciau import inline_akmola_obl,inline_zhetisy_obl,inline_almaty_obl,inline_ulytau_obl,inline_turkistan_obl,inline_krg_obl,inline_atyrau_obl,inline_aktay_obl,inline_oral_obl,inline_shygys_obl,inline_kostanay_obl,inline_kyzylorda_obl,inline_soltystuk_obl,inline_aktobe_obl,inline_pavlodar_obl,inline_zhambyl_obl,inline_abai_obl
-
+from utils.dp_api import quick_commands as commands
 
 @dp.callback_query_handler(text="Артқа қайту")
 async def get_back(call: CallbackQuery):
@@ -13,21 +14,30 @@ async def get_back(call: CallbackQuery):
 
 @dp.message_handler(text='Намаз уакыты🕌')
 async def namaz_time(message: types.Message):
-    await message.answer("Қай қаладансыз?", reply_markup=namaz_olbys)
+    city = await commands.select_user_city(message.from_user.id)
+    if city == None:
+        await message.answer("Қай қаладансыз?")
+        await message.answer("Қалалар:", reply_markup=namaz_olbys)
+    else:
+        await print_namaz_time_message(city,message)
 
+@dp.message_handler(text="Қаланы өзгерту")
 
 @dp.callback_query_handler(text="Астана")
 async def Astana(call: CallbackQuery):
+    await commands.update_city(call.from_user.id,call.data)
     await print_namaz_time(call.data, call)
     await call.message.delete()
 
 @dp.callback_query_handler(text="Алматы")
 async def Astana(call: CallbackQuery):
+    await commands.update_city(call.from_user.id, call.data)
     await print_namaz_time(call.data, call)
     await call.message.delete()
 
 @dp.callback_query_handler(text="Шымкент")
 async def Astana(call: CallbackQuery):
+    await commands.update_city(call.from_user.id, call.data)
     await print_namaz_time(call.data, call)
     await call.message.delete()
 
@@ -38,6 +48,7 @@ async def Akmola(call: CallbackQuery):
 
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -48,6 +59,7 @@ async def Akmola(call: CallbackQuery):
 
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -57,6 +69,7 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_almaty_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -67,6 +80,7 @@ async def Akmola(call: CallbackQuery):
 
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -77,6 +91,7 @@ async def Akmola(call: CallbackQuery):
 
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -86,6 +101,7 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_turkistan_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -94,6 +110,7 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_zhambyl_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -102,6 +119,7 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_kyzylorda_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -110,6 +128,7 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_abai_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -118,6 +137,7 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_shygys_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -127,6 +147,7 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_kostanay_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -136,6 +157,7 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_soltystuk_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -145,6 +167,7 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_pavlodar_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -154,6 +177,7 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_aktobe_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -162,6 +186,7 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_aktay_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -171,6 +196,7 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_atyrau_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()
 
@@ -180,5 +206,6 @@ async def Akmola(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=inline_oral_obl)
     @dp.callback_query_handler()
     async def akmola_list(call: CallbackQuery):
+        await commands.update_city(call.from_user.id, call.data)
         await print_namaz_time(call.data, call)
         await call.message.delete()

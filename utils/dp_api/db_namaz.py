@@ -4,6 +4,7 @@ from typing import List
 import datetime
 from aiogram import Dispatcher
 from data import config
+from utils.dp_api import quick_commands as commands
 db = Gino()
 
 

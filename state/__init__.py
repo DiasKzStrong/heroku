@@ -1,1 +1,1 @@
-from .States import States
+from .States import register
