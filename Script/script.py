@@ -4,7 +4,7 @@ import json
 from datetime import date
 from Keybord.Default import kb_namaz_time
 
-with open(r"D:\pythonProject11\Script\data.json", 'r', encoding='utf-8') as file:
+with open(r"D:\pythonProject11\Script\data.json.json", 'r', encoding='utf-8') as file:
     city_list = json.load(file)
 
 def get_namaz_time(inpp):
