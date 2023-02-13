@@ -4,6 +4,9 @@ async def on_startup(dp):
     from utils.notify_admin import on_startup_notify
     await on_startup_notify(dp)
 
+    import middlewares
+    middlewares.setup(dp)
+
     from utils.dp_api import db_namaz
     await db_namaz.on_startup(dp)
 

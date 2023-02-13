@@ -3,7 +3,8 @@ from asyncpg import UniqueViolationError
 from utils.dp_api.db_namaz import db
 from utils.dp_api.schemas.user import User
 
-async def add_user(user_id: int, user_name: str, zhynys: str,city:str = None):
+
+async def add_user(user_id: int, user_name: str, zhynys: str, city: str = None):
     try:
         users = User(user_id=user_id, user_name=user_name, zhynys=zhynys)
         await users.create()
@@ -25,14 +26,29 @@ async def select_user(user_id):
     user = await User.select('user_name').where(User.user_id == user_id).gino.scalar()
     return user
 
+
 async def select_user_city(user_id):
     city = await User.select('city').where(User.user_id == user_id).gino.scalar()
     return city
+
+async def select_user_zhynys(user_id):
+    zhynys = await User.select('zhynys').where(User.user_id == user_id).gino.scalar()
+    return zhynys
 
 async def sel_user(user_id):
     user = await User.query.where(User.user_id == user_id).gino.first()
     return user
 
-async def update_city(user_id,cityy):
+
+async def update_city(user_id, cityy):
     user = await sel_user(user_id)
     await user.update(city=cityy).apply()
+
+
+async def del_city(user_id):
+    user = await sel_user(user_id)
+    await user.update(city=None).apply()
+
+async def del_user(user_id):
+    user = await sel_user(user_id)
+    await user.delete()

@@ -6,12 +6,14 @@ from Keybord.Default import kb_namaz_time
 from Keybord.Inline.inline_oblys import namaz_olbys
 from Keybord.Inline.inline_oblys_ciau import inline_akmola_obl,inline_zhetisy_obl,inline_almaty_obl,inline_ulytau_obl,inline_turkistan_obl,inline_krg_obl,inline_atyrau_obl,inline_aktay_obl,inline_oral_obl,inline_shygys_obl,inline_kostanay_obl,inline_kyzylorda_obl,inline_soltystuk_obl,inline_aktobe_obl,inline_pavlodar_obl,inline_zhambyl_obl,inline_abai_obl
 from utils.dp_api import quick_commands as commands
+from utils.misc.throttling import rate_limit
+
 
 @dp.callback_query_handler(text="Артқа қайту")
 async def get_back(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=namaz_olbys)
 
-
+@rate_limit(limit=5)
 @dp.message_handler(text='Намаз уакыты🕌')
 async def namaz_time(message: types.Message):
     city = await commands.select_user_city(message.from_user.id)
@@ -22,6 +24,11 @@ async def namaz_time(message: types.Message):
         await print_namaz_time_message(city,message)
 
 @dp.message_handler(text="Қаланы өзгерту")
+async def change_city(message: types.Message):
+    city = await commands.select_user_city(message.from_user.id)
+    await commands.del_city(message.from_user.id)
+    await message.answer("Қай қаладансыз?")
+    await message.answer("Қалалар:", reply_markup=namaz_olbys)
 
 @dp.callback_query_handler(text="Астана")
 async def Astana(call: CallbackQuery):

@@ -95,3 +95,13 @@ inline_wudu = InlineKeyboardMarkup(inline_keyboard=[[
 inline_ulken_wudu = InlineKeyboardMarkup(inline_keyboard=[[
     InlineKeyboardButton(text='Ғұсыл алып үйрену', web_app=WebAppInfo(url='https://muslim.kz/kz/namaz/man/1'))]
 ])
+
+inline_Quran = InlineKeyboardMarkup(
+    inline_keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            InlineKeyboardButton(
+                        text = "Құран☪️",web_app=WebAppInfo(url = 'https://kitap.kuran.kz/#!/bet/1/kk')
+                                )
+                        ]
+    )
+)

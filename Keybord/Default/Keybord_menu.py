@@ -1,5 +1,5 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-
+from aiogram.types.web_app_info import WebAppInfo
 zhynys_menu = ReplyKeyboardMarkup(
     keyboard=
     [
@@ -20,14 +20,14 @@ kb_er_menu = ReplyKeyboardMarkup(
             KeyboardButton(text='Намаз окып уйрену🧔🏻‍♂️')
         ],
         [
-            KeyboardButton(text='Дарет алып уйрену🧔🏻‍♂️'),
-            KeyboardButton(text='Ғұсыл алып үйрену🧔🏻‍♂️'),
-            KeyboardButton(text='Құран☪️'),
+            KeyboardButton(text='Дарет алып уйрену🧔🏻‍♂️',web_app=WebAppInfo(url='https://muslim.kz/kz/namaz/man/2')),
+            KeyboardButton(text='Ғұсыл алып үйрену🧔🏻‍♂️',web_app=WebAppInfo(url='https://muslim.kz/kz/namaz/man/1')),
+            KeyboardButton(text='Құран☪️',web_app=WebAppInfo(url ='https://kitap.kuran.kz/#!/bet/1/kk')),
             KeyboardButton(text='Намаз уакыты🕌')
 
         ],
         [
-            KeyboardButton(text="Артқа қайту◀️")
+            KeyboardButton(text="Қайта тіркелу◀️")
         ]
     ]
 
@@ -61,14 +61,14 @@ kb_ayel_menu = ReplyKeyboardMarkup(
             KeyboardButton(text='Намаз окып уйрену🧕🏻')
         ],
         [
-            KeyboardButton(text='Дарет алып уйрену🧕🏻'),
-            KeyboardButton(text='Ғұсыл алып үйрену🧕🏻'),
-            KeyboardButton(text='Құран☪️'),
+            KeyboardButton(text='Дарет алып уйрену🧕🏻',web_app=WebAppInfo(url ='https://muslim.kz/kz/namaz/woman/2')),
+            KeyboardButton(text='Ғұсыл алып үйрену🧕🏻',web_app=WebAppInfo(url ='https://muslim.kz/kz/namaz/woman/1')),
+            KeyboardButton(text='Құран☪️',web_app = WebAppInfo(url ='https://kitap.kuran.kz/#!/bet/1/kk')),
             KeyboardButton(text='Намаз уакыты🕌')
 
         ],
         [
-            KeyboardButton(text="Артқа қайту⏪️")
+            KeyboardButton(text="Қайта тіркелу⏪️")
         ]
     ]
 
@@ -102,12 +102,11 @@ kb_namaz_time = ReplyKeyboardMarkup(
             KeyboardButton(text="Қаланы өзгерту")
         ],
         [
-            KeyboardButton(text="Менюға артқа қайту◀️")
+            KeyboardButton(text="Менюға артқа қайту◀")
         ]
 
     ],
-    resize_keyboard=True,
-    one_time_keyboard=True
+    resize_keyboard=True
 
 
 )
